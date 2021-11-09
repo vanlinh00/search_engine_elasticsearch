@@ -1,0 +1,17 @@
+{
+  "name": "searchengine",
+  "version": "1.0.0",
+  "description": "search engine",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node /app.js"
+  },
+  "author": "vanlinh",
+  "license": "ISC",
+  "dependencies": {
+    "elasticsearch": "^16.7.2",
+    "express": "^4.17.1",
+    "get-json": "^1.0.1"
+  }
+}
