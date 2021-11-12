@@ -20,6 +20,7 @@ app.get('/hinhanh', function (req, res) {
     client.search({
       index: 'search-articles',
       type: 'articles',
+      size: 100,
       body: {
         "query": {
           "match_phrase": {
@@ -50,6 +51,7 @@ app.get('/moogle', function (req, res) {
     client.search({
       index: 'search-articles',
       type: 'articles',
+      size: 100,
       body: {
         "query": {
           "match_phrase": {
@@ -61,9 +63,9 @@ app.get('/moogle', function (req, res) {
     }).then(function (resp) {
 
 
-      console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits.hits[0]._source.description);
-
-      // res.send(resp.hits.hits[0]._source.Title);
+    //  console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits);
+  //    console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits.hits[0]._source);
+      // res.send(resp);
       res.render('search_key.ejs', { data: resp.hits.hits, key: req.query.search });
 
     }, function (err) {
@@ -75,36 +77,8 @@ app.get('/moogle', function (req, res) {
 
 });
 
-// // Route to search for Articles by title
-// app.get('/search-title/:title', function (req, res) {
-//   // Access title like this: req.params.title
-
-//   /* Query using slop to allow for unexact matches */
-//   client.search({
-//     index: 'search-articles',
-//     type: 'articles',
-//     body: {
-//       "query": {
-//         "match_phrase": {
-//           "Title": { query: req.params.title, slop: 100 }
-//         }
-//       }
-//     }
-
-//   }).then(function (resp) {
-
-//     console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits.hits);
-
-//     res.send(resp.hits.hits[0]._source.Title);
-//     // res.render('test.ejs');
-
-//   }, function (err) {
-//     //   console.trace(err.message);
-//     //res.send(err.message);
-//   });
-// });
-
 // Start listening for requests on port 3000
 app.listen(3000, function () {
   console.log('App listening for requests...');
 });
+

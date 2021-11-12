@@ -18,7 +18,7 @@
         h6 {
             margin: 0;
             color: #f1f1f1;
-
+            size: 1px;
         }
 
         * {
@@ -73,6 +73,15 @@
             display: table;
         }
 
+       /* .image_content a{
+            color: #f1f1f1;
+            font-size: 5px;
+             
+        } */
+        .image_content h6
+        {
+            font-size: 7px;
+        }
         ul {
             list-style-type: none;
             margin: 1px 200px;
@@ -94,7 +103,7 @@
         }
 
         li a:hover {
-            background-color: #2196F3;
+            background-color: #fff;
         }
 
         .container {
@@ -139,12 +148,14 @@
                         <%=data[i]._source.description%>
                     </h6>
                 </div> -->
-            <div>
-                <img src="https://cf.shopee.vn/file/f54358930d7c20dd2e0c6e9191155849" />
-                <h5>ten</h5>
-                <h6>ten</h6>
+            <div class="image_content">
+                <img src=<%=data[i]._source.thumb_art%> />
+                <!-- <a class="active" href=<%=data[i]._source.link_news%>><%=data[i]._source.link_news%></a> -->
+                <!-- <h6>
+                    <%=data[i]._source.title_news%>
+                </h6> -->
             </div>
-           
+
             <% } %>
     </div>
 

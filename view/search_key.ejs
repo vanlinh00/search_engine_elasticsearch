@@ -8,6 +8,7 @@
         body {
             font-family: Arial;
             background: #1c4a64;
+            margin: 1px 210px;
         }
 
         h2,
@@ -30,13 +31,6 @@
         }
 
 
-        form {
-            margin: 1px 200px;
-        }
-
-        .container {
-            margin: 1px 200px;
-        }
 
         .contentnhe {
             margin: 10px;
@@ -80,10 +74,9 @@
 
         ul {
             list-style-type: none;
-            margin: 1px 200px;
             padding: 0;
             overflow: hidden;
-
+            margin: 0px;
         }
 
         li {
@@ -101,6 +94,34 @@
         li a:hover {
             background-color: #2196F3;
         }
+
+        .Header_content {
+            margin-top: 25px;
+        }
+
+        .title_content {
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+
+        .Header_content a {
+            color: white;
+            margin: 0px;
+
+            text-decoration: none;
+            font-size: 11px;
+
+        }
+
+        .nava {
+            margin: 0px;
+
+        }
+
+        .rep {
+            margin: 0px;
+            padding: 0px;
+        }
     </style>
 </head>
 
@@ -111,20 +132,26 @@
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
-    <div>
+    <div class="nava">
         <ul>
             <li><a class="active" href="#home">Tất cả</a></li>
             <li><a href="/hinhanh?id=<%=key%>">Hình ảnh</a></li>
         </ul>
+
+    </div>
+    <div class="rep">
+        <h6>Tìm thấy <%=data.length%> kết quả trong(0,38 giây)</h6>
     </div>
     <div class="container">
         <% for(var i=0; i<data.length; i++) { %>
             <div class="contentnhe">
                 <div class="Header_content">
-                    <h6>hi</h6>
+                    <!-- <h6>https://vnexpress.net/nguoi-tre-viet-thich-hen-ho-qua-ung-dung-4383146.html</h6> -->
+                    <a class="active"
+                        href=<%=data[i]._source.link_news%>><%=data[i]._source.link_news%></a>
                 </div>
                 <div class="title_content">
-                    <h3>hi</h3>
+                    <h3><%=data[i]._source.title_news%></h3>
                 </div>
                 <div class="text_content">
                     <h6>
@@ -134,6 +161,8 @@
             </div>
             <% } %>
     </div>
+ 
+
 </body>
 
 </html>
