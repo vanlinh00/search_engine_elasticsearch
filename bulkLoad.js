@@ -5,7 +5,13 @@ var bulkArticlesArray = [];
 var makeBulkArray = function (articles, callback) {
   for (var current in articles) {
     bulkArticlesArray.push(
-      { index: { _index: 'search-articles', _type: 'articles', _id: articles[current].ID } },
+      {
+         index: { 
+           _index: 'search-articles',
+            _type: 'articles', 
+            _id: articles[current].ID
+           } 
+        },
       {
         "description": articles[current]["description"],
         "thumb_art": articles[current]["thumb_art"],

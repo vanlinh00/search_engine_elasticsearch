@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial;
-            background: #1c4a64;
+            background: #254d6e;
             margin: 1px 210px;
         }
 
@@ -27,6 +27,7 @@
         }
 
         .header {
+            margin-top: 40px;
             position: relative;
         }
 
@@ -92,7 +93,7 @@
         }
 
         li a:hover {
-            background-color: #2196F3;
+            background-color: #f1f1f1;
         }
 
         .Header_content {
@@ -118,6 +119,14 @@
 
         }
 
+        .magrintop {
+            margin-top: 30px;
+        }
+
+        .bogoc {
+            border-radius: 50px;
+        }
+
         .rep {
             margin: 0px;
             padding: 0px;
@@ -126,10 +135,12 @@
 </head>
 
 <body>
-    <div class="header">
-        <form class="example" action="/moogle">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+    <div class="header magrintop ">
+        <form class="example " action="/moogle">
+            <div class="bogoc ">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
         </form>
     </div>
     <div class="nava">
@@ -140,18 +151,19 @@
 
     </div>
     <div class="rep">
-        <h6>Tìm thấy <%=data.length%> kết quả trong(0,38 giây)</h6>
+        <h6>Tìm thấy <%=data.length%> kết quả trong <%=timeSearch%> s</h6>
     </div>
     <div class="container">
         <% for(var i=0; i<data.length; i++) { %>
             <div class="contentnhe">
                 <div class="Header_content">
                     <!-- <h6>https://vnexpress.net/nguoi-tre-viet-thich-hen-ho-qua-ung-dung-4383146.html</h6> -->
-                    <a class="active"
-                        href=<%=data[i]._source.link_news%>><%=data[i]._source.link_news%></a>
+                    <a class="active" href=<%=data[i]._source.link_news%>><%=data[i]._source.link_news%></a>
                 </div>
                 <div class="title_content">
-                    <h3><%=data[i]._source.title_news%></h3>
+                    <h3>
+                        <%=data[i]._source.title_news%>
+                    </h3>
                 </div>
                 <div class="text_content">
                     <h6>
@@ -161,7 +173,7 @@
             </div>
             <% } %>
     </div>
- 
+
 
 </body>
 

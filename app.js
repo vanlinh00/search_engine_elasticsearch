@@ -32,7 +32,9 @@ app.get('/hinhanh', function (req, res) {
     }).then(function (resp) {
       console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits.hits[0]._source.description);
       // res.send(resp.hits.hits[0]._source.Title);
-      res.render('search_img.ejs', { data: resp.hits.hits, key: req.query.id });
+      let timeSearch = resp.hits.max_score + 10;
+
+      res.render('search_img.ejs', { data: resp.hits.hits, key: req.query.id, timeSearch });
     }, function (err) {
       console.trace(err.message);
       res.send(err.message);
@@ -45,7 +47,7 @@ app.get('/moogle', function (req, res) {
   console.log(req.query.search);
   /* Query using slop to allow for unexact matches */
   if (req.query.search == "" || req.query.search == undefined) {
-    res.render('test.ejs');
+    res.render('search.ejs');
   }
   else {
     client.search({
@@ -62,11 +64,13 @@ app.get('/moogle', function (req, res) {
 
     }).then(function (resp) {
 
-
-    //  console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits);
-  //    console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits.hits[0]._source);
-      // res.send(resp);
-      res.render('search_key.ejs', { data: resp.hits.hits, key: req.query.search });
+      //var timeSearch= resp.hits.max_score/10;
+      //  console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits);
+      //    console.log("sdfgfdsSuccessful query! Here is the response:", resp.hits.hits[0]._source);
+      //  res.send(resp);
+      //   console.log(resp);
+      var timeSearch = null;
+      res.render('search_key.ejs', { data: resp.hits.hits, key: req.query.search, timeSearch });
 
     }, function (err) {
       console.trace(err.message);
@@ -78,7 +82,7 @@ app.get('/moogle', function (req, res) {
 });
 
 // Start listening for requests on port 3000
-app.listen(3000, function () {
+app.listen(3003, function () {
   console.log('App listening for requests...');
 });
 
